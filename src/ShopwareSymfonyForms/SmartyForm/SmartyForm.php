@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Templating\Helper\FormHelper;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\TranslatorHelper;
 use Symfony\Component\Form\Extension\Templating\TemplatingRendererEngine;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
+use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormFactoryBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormRenderer;
@@ -137,6 +138,30 @@ class SmartyForm
         }
 
         return $this->formHelper;
+    }
+
+    /**
+     * Get the form errors
+     * @param Form $form
+     * @author Martin Schindler
+     * @return array
+     */
+    public function getFormErrorMessages(Form $form) {
+        $errors = array();
+        foreach ($form->getErrors() as $key => $error) {
+            if ($form->isRoot()) {
+                $errors['#'][] = $error->getMessage();
+            } else {
+                $errors[] = $error->getMessage();
+            }
+        }
+
+        foreach ($form->all() as $child) {
+            if (!$child->isValid()) {
+                $errors[$child->getName()] = $this->getFormErrorMessages($child);
+            }
+        }
+        return $errors;
     }
 
     /**
