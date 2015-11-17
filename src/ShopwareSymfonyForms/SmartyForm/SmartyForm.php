@@ -8,7 +8,7 @@
 
 namespace ShopwareSymfonyForms\SmartyForm;
 
-use ShopwareSymfonyForms\Plugins\SmartyPlugins;
+use ShopwareSymfonyForms\SmartyForm\Plugins\SmartyPlugins;
 use ShopwareSymfonyForms\SmartyForm\Parser\TemplateNameParser;
 use Smarty;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\FormHelper;

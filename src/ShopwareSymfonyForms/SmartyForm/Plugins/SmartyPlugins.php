@@ -1,6 +1,6 @@
 <?php
 
-namespace ShopwareSymfonyForms\Plugins;
+namespace ShopwareSymfonyForms\SmartyForm\Plugins;
 
 use Smarty;
 use Smarty_Internal_Template;
