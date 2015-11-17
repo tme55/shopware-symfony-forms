@@ -17,7 +17,10 @@
 		"symfony/templating": ">=2.7",
 		"symfony/framework-bundle": "^2.7"
 	},
-	"autoload": {
-		"classmap": ["src/"]
-	}
+    "autoload": {
+        "psr-4": {
+            "ShopwareSymfonyForms\\SmartyForm\\": "src/ShopwareSymfonyForms/SmartyForm/"
+        }
+    }
+
 }
