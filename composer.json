@@ -19,8 +19,7 @@
 	},
     "autoload": {
         "psr-4": {
-            "ShopwareSymfonyForms\\SmartyForm\\": "src/"
+            "ShopwareSymfonyForms\\SmartyForm\\": "src/ShopwareSymfonyForms/SmartyForm"
         }
     }
-
 }
