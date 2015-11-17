@@ -68,7 +68,7 @@ class SmartyForm
             ->getFormFactory();
 
         # registering all necessary smarty plugins
-        $this->smartyPlugins = new SmartyPlugins($this->formHelper, $smarty);
+        $this->smartyPlugins = new SmartyPlugins($this->getFormHelper(), $smarty);
     }
 
     /**
