@@ -1,0 +1,23 @@
+{
+	"name": "barbieswimcrew/shopware-symfony-forms",
+    "description": "This repository implements the integration of the symfony2 form component in Shopware projects",
+    "keywords": ["shopware", "symfony", "form builder"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Martin Schindler"
+        }
+    ],
+	"require": {
+        "php": ">=5.4.0",
+		"symfony/http-foundation": ">=2.1",
+		"symfony/http-kernel": ">=2.1", //???
+		"symfony/form": ">=2.1",
+		"symfony/validator": ">=2.1", //???
+		"symfony/templating": ">=2.7",
+		"symfony/framework-bundle": "^2.7"
+	},
+	"autoload": {
+		"classmap": ["src/"]
+	}
+}
