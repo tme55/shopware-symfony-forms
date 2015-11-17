@@ -1,16 +1,12 @@
-<?php
-
-
-if (isset($label_attr['class']) && strpos($label_attr['class'], '-inline') !== false) {
-    $output = "<div class='control-group'>";
-} else {
-    $output = "<div {$view['form']->block($form, 'widget_container_attributes')}>";
-}
-
-foreach ($form as $child) {
-    $output .= $view['form']->widget($child, array('parent_label_class' => (isset($label_attr['class']) ? $label_attr['class'] : ''), 'translation_domain' => $choice_translation_domain));
-}
-
-$output .= "</div>";
-
-echo $output;
+<?php if (isset($label_attr['class']) && strpos($label_attr['class'], '-inline') !== false) { ?>
+<div class="control-group">
+    <?php } else { ?>
+    <div <?php echo $view['form']->block($form, 'widget_container_attributes') ?>>
+        <?php } ?>
+        <?php foreach ($form as $child): ?>
+            <?php echo $view['form']->widget($child, array(
+                'parent_label_class' => (isset($label_attr['class']) ? $label_attr['class'] : ''),
+                'translation_domain' => $choice_translation_domain
+            )) ?>
+        <?php endforeach ?>
+    </div>

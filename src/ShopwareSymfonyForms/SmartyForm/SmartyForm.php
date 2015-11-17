@@ -34,7 +34,7 @@ use Symfony\Component\Validator\Validation;
 class SmartyForm
 {
 
-    const VIEW_PATH = __DIR__ . '/Resources/Views/Form';
+    const VIEW_PATH = __DIR__ . '/Resources/views/Form';
 
     /** @var FormFactoryBuilderInterface $formFactoryBuilder */
     protected $formFactoryBuilder;

@@ -1,22 +1,10 @@
-<?php
-if (count($errors) > 0) {
-    if (isset($form['parent']) && $form['parent']) {
-        $output = "<span class='help-block'>";
-    } else {
-        $output = "<div class='alert alert-danger'>";
-    }
+<?php if (count($errors) > 0): ?>
+<?php if (isset($form['parent']) && $form['parent']) { ?><span class="help-block"><?php } else { ?><div class="alert alert-danger"><?php } ?>
+	<ul class="list-unstyled">
 
-    $output .= "<ul class='list-unstyled'>";
-    foreach ($errors as $error) {
-        $output .= "<li><span class='glyphicon glyphicon-exclamation-sign'></span>{$error->getMessage()}</li>";
-    }
-    $output .= "</ul>";
-
-    if (isset($form['parent']) && $form['parent']) {
-        $output .= "</span>";
-    } else {
-        $output .= "</div>";
-    }
-
-    echo $output;
-}
+		<?php foreach ($errors as $error): ?>
+			<li><span class="glyphicon glyphicon-exclamation-sign"></span> <?php echo $error->getMessage() ?></li>
+		<?php endforeach; ?>
+	</ul>
+<?php if (isset($form['parent']) && $form['parent']) { ?></span><?php } else { ?></div><?php } ?>
+<?php endif ?>

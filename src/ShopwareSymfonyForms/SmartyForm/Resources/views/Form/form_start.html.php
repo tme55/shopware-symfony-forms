@@ -1,23 +1,7 @@
-<?php
-
-$attr['class'] = trim((isset($attr['class']) ? $attr['class'] : '') . ' form-horizontal');
-$method = strtoupper($method);
-$form_method = strtolower($method === 'GET' || $method === 'POST' ? $method : 'POST');
-
-foreach ($attr as $k => $v) {
-    $attributes .= printf(' %s="%s"', $view->escape($k), $view->escape($v));
-}
-
-if ($multipart) {
-    $multipart = "enctype=multipart/form-data";
-} else {
-    $multipart = "";
-}
-
-$output = "<form name='{$name}' method='{$form_method}' action='{$action}' {$attributes} {$multipart}>";
-
-if ($form_method !== $method) {
-    $output .= "<input type='hidden' name='_method' value='{$method}'/>";
-}
-
-echo $output;
+<?php $attr['class'] = trim((isset($attr['class']) ? $attr['class'] : '') . ' form-horizontal') ?>
+<?php $method = strtoupper($method) ?>
+<?php $form_method = $method === 'GET' || $method === 'POST' ? $method : 'POST' ?>
+<form name="<?php echo $name ?>" method="<?php echo strtolower($form_method) ?>" action="<?php echo $action ?>"<?php foreach ($attr as $k => $v) { printf(' %s="%s"', $view->escape($k), $view->escape($v)); } ?><?php if ($multipart): ?> enctype="multipart/form-data"<?php endif ?>>
+	<?php if ($form_method !== $method): ?>
+		<input type="hidden" name="_method" value="<?php echo $method ?>" />
+	<?php endif ?>
