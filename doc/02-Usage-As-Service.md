@@ -3,7 +3,6 @@
 To register the form factory as a service for convenient usage please subscribe to the `Enlight_Controller_Front_DispatchLoopStartup` event and register the service in the defined `onStartDispatch` method:
 
 ```php
-
 $this->subscribeEvent('Enlight_Controller_Front_DispatchLoopStartup', 'onStartDispatch');
 
 /**

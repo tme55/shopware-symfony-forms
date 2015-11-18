@@ -8,8 +8,6 @@ This package solves this issue by giving you an easy to use way of integrating t
 To use the form factory component in your Shopware plugin you only have to instantiate it. To create your form just do like 
 
 ```php
-<?php
-
 $formFactory = new \ShopwareSymfonyForms\FormFactory\FormFactory(Shopware()->Container());
 
 ```
@@ -19,25 +17,23 @@ $formFactory = new \ShopwareSymfonyForms\FormFactory\FormFactory(Shopware()->Con
 To use the form factory component in your Shopware plugin you only have to instantiate it. To create your form just do like defined in the official symfony form documentation.
 
 ```php
-<?php
-
 $form = $this->formFactory->createBuilder()
-            ->add('company', 'text', array(
-                'required' => true,
-                'constraints' => array(
-                    new \Symfony\Component\Validator\Constraints\NotBlank(),
-                    new \Symfony\Component\Validator\Constraints\Length(array('min' => 3))
-                )
-            ))
-            ->add('street', 'text')
-            ->add('city', 'text')
-            ->add('zipcode', 'text')
-            ->add('country', 'entity', array(
-                'class' => 'Shopware\Models\Country\Country',
-                'property' => 'name'
-            ))
-            ->add('go', 'submit')
-            ->getForm();
+    ->add('company', 'text', array(
+        'required' => true,
+        'constraints' => array(
+            new \Symfony\Component\Validator\Constraints\NotBlank(),
+            new \Symfony\Component\Validator\Constraints\Length(array('min' => 3))
+        )
+    ))
+    ->add('street', 'text')
+    ->add('city', 'text')
+    ->add('zipcode', 'text')
+    ->add('country', 'entity', array(
+        'class' => 'Shopware\Models\Country\Country',
+        'property' => 'name'
+    ))
+    ->add('go', 'submit')
+    ->getForm();
 
 ```
 
@@ -49,8 +45,6 @@ By checking if the form has been submitted and is valid you are able to do any s
 By assigning the form to the template the form view created via `$form->createView()` will be available in the frontend template by accessing it via Smarty syntax `{$form}`. 
 
 ```php
-<?php
-
 $form->handleRequest();
 
 if ($form->isSubmitted() AND $form->isValid()) {
