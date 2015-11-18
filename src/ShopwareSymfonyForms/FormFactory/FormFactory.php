@@ -8,6 +8,7 @@
 
 namespace ShopwareSymfonyForms\FormFactory;
 
+use ShopwareSymfonyForms\FormFactory\Manager\ExtendedEntityManager;
 use ShopwareSymfonyForms\FormFactory\Parser\TemplateNameParser;
 use ShopwareSymfonyForms\FormFactory\Plugins\SmartyPlugins;
 use Symfony\Bridge\Doctrine\Form\DoctrineOrmExtension;
@@ -17,7 +18,6 @@ use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Form\Extension\Templating\TemplatingRendererEngine;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormFactoryBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormRenderer;
@@ -59,7 +59,7 @@ class FormFactory implements FormFactoryInterface
     {
         # configuring the form factory
         $this->formFactory = Forms::createFormFactoryBuilder()
-            ->addExtension(new DoctrineOrmExtension($container->get('models')))
+            ->addExtension(new DoctrineOrmExtension(new ExtendedEntityManager($container->get('models'))))
             ->addExtension(new ValidatorExtension(Validation::createValidator()))
             ->getFormFactory();
 
