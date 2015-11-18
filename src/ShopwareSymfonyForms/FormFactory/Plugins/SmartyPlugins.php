@@ -1,6 +1,6 @@
 <?php
 
-namespace ShopwareSymfonyForms\SmartyForm\Plugins;
+namespace ShopwareSymfonyForms\FormFactory\Plugins;
 
 use Smarty_Internal_Template;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\FormHelper;

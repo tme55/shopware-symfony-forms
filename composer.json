@@ -1,6 +1,6 @@
 {
 	"name": "barbieswimcrew/shopware-symfony-forms",
-    "description": "This repository implements the integration of the symfony2 form component in Shopware projects",
+    "description": "Integration of the symfony2 form component in Shopware projects",
     "keywords": ["shopware", "symfony", "form builder"],
     "license": "MIT",
     "authors": [
@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ShopwareSymfonyForms\\SmartyForm\\": "src/ShopwareSymfonyForms/SmartyForm"
+            "ShopwareSymfonyForms\\FormFactory\\": "src/ShopwareSymfonyForms/FormFactory"
         }
     }
 }

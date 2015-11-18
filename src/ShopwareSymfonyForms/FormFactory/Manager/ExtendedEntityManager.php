@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ShopwareSymfonyForms\SmartyForm\Manager;
+namespace ShopwareSymfonyForms\FormFactory\Manager;
 
 use Shopware\Components\Model\ModelManager;
 

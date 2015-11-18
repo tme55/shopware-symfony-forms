@@ -1,6 +1,6 @@
 <?php
 
-namespace ShopwareSymfonyForms\SmartyForm\Parser;
+namespace ShopwareSymfonyForms\FormFactory\Parser;
 
 use Symfony\Component\Templating\TemplateReference;
 use Symfony\Component\Templating\TemplateNameParserInterface;
@@ -8,7 +8,7 @@ use Symfony\Component\Templating\TemplateNameParserInterface;
 /**
  * Class TemplateNameParser
  * @author Martin Schindler
- * @package ShopwareSymfonyForms\SmartyForm\Parser
+ * @package ShopwareSymfonyForms\FormFactory\Parser
  */
 class TemplateNameParser implements TemplateNameParserInterface
 {
