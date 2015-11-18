@@ -8,14 +8,14 @@
 
 namespace ShopwareSymfonyForms\SmartyForm;
 
-use ShopwareSymfonyForms\SmartyForm\Plugins\SmartyPlugins;
 use ShopwareSymfonyForms\SmartyForm\Parser\TemplateNameParser;
-use Smarty;
+use ShopwareSymfonyForms\SmartyForm\Plugins\SmartyPlugins;
+use Symfony\Bridge\Doctrine\Form\DoctrineOrmExtension;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\FormHelper;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\TranslatorHelper;
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Form\Extension\Templating\TemplatingRendererEngine;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
-use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormFactoryBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormRenderer;
@@ -56,15 +56,20 @@ class SmartyForm
 
     /**
      * SmartyForm constructor.
-     * @param Smarty $smarty
+     * @param Container $container
+     * @internal param Smarty $smarty
+     * @internal param EntityManager $manager
      */
-    public function __construct(Smarty $smarty)
+    public function __construct(Container $container)
     {
         $validator = Validation::createValidator();
         $this->formFactoryBuilder = Forms::createFormFactoryBuilder();
+        $manager = $container->get('models');
+        $smarty = $container->get('template');
 
         # configuring the form factory
         $this->formFactory = $this->formFactoryBuilder
+            ->addExtension(new DoctrineOrmExtension($manager))
             ->addExtension(new ValidatorExtension($validator))
             ->getFormFactory();
 
@@ -138,30 +143,6 @@ class SmartyForm
         }
 
         return $this->formHelper;
-    }
-
-    /**
-     * Get the form errors
-     * @param Form $form
-     * @author Martin Schindler
-     * @return array
-     */
-    public function getFormErrorMessages(Form $form) {
-        $errors = array();
-        foreach ($form->getErrors() as $key => $error) {
-            if ($form->isRoot()) {
-                $errors['#'][] = $error->getMessage();
-            } else {
-                $errors[] = $error->getMessage();
-            }
-        }
-
-        foreach ($form->all() as $child) {
-            if (!$child->isValid()) {
-                $errors[$child->getName()] = $this->getFormErrorMessages($child);
-            }
-        }
-        return $errors;
     }
 
     /**

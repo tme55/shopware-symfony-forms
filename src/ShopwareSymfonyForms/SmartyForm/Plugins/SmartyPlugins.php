@@ -2,7 +2,6 @@
 
 namespace ShopwareSymfonyForms\SmartyForm\Plugins;
 
-use Smarty;
 use Smarty_Internal_Template;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\FormHelper;
 
@@ -22,9 +21,9 @@ class SmartyPlugins
     /**
      * SmartyPlugins constructor.
      * @param FormHelper $formHelper
-     * @param Smarty $smarty
+     * @param \Enlight_Template_Manager $smarty
      */
-    public function __construct(FormHelper $formHelper, Smarty $smarty)
+    public function __construct(FormHelper $formHelper, \Enlight_Template_Manager $smarty)
     {
         $this->formHelper = $formHelper;
 
@@ -135,10 +134,10 @@ class SmartyPlugins
     }
 
     /**
-     * @param Smarty $smarty
+     * @param \Enlight_Template_Manager $smarty
      * @author Martin Schindler
      */
-    public function register(Smarty $smarty)
+    public function register(\Enlight_Template_Manager $smarty)
     {
         $smarty->registerPlugin('function', 'form_start', array($this, 'formStart'));
         $smarty->registerPlugin('function', 'form_errors', array($this, 'formErrors'));

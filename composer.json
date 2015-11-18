@@ -15,7 +15,8 @@
 		"symfony/form": ">=2.1",
 		"symfony/validator": ">=2.1",
 		"symfony/templating": ">=2.7",
-		"symfony/framework-bundle": "^2.7"
+		"symfony/framework-bundle": "^2.7",
+		"symfony/doctrine-bridge": "^2.7"
 	},
     "require-dev": {
         "smarty/smarty": "~3.1"
