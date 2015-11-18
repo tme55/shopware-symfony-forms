@@ -8,7 +8,7 @@ To register the form factory as a service for convenient usage please subscribe 
 public function install()
 {
     //...
-    $this->subscribeEvent('Enlight_Bootstrap_InitResource_sw.form.factory', 'initResource');
+    $this->subscribeEvent('Enlight_Bootstrap_InitResource_sw.form.factory', 'onInitResource');
     //...
 }
 
