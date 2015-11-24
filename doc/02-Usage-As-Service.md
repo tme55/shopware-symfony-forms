@@ -1,22 +1,23 @@
 # Usage - Registering the component as service
 
-To register the form factory as a service for convenient usage please subscribe to the `Enlight_Controller_Front_DispatchLoopStartup` event and register the service in the defined `onStartDispatch` method:
+To register the form factory as a service for convenient usage please subscribe to the `Enlight_Bootstrap_InitResource_...` event and return an instance in the callback method.
 
 ```php
 //engine/Shopware/Plugins/Scope/Module/YourPluginName/Bootstrap.php
 
-public function install(){
+public function install()
+{
     //...
-    $this->subscribeEvent('Enlight_Controller_Front_DispatchLoopStartup', 'onStartDispatch');
+    $this->subscribeEvent('Enlight_Bootstrap_InitResource_sw.form.factory', 'onInitResource');
     //...
 }
 
 /**
- * onStartDispatch method to Register to Enlight_Controller_Front_DispatchLoopStartup event
+ * OnInit method to Register service in container
  */
-public function onStartDispatch(Enlight_Event_EventArgs $arguments)
+public function onInitResource(Enlight_Event_EventArgs $arguments)
 {
-    Shopware()->Container()->set('sw.form.factory', new \ShopwareSymfonyForms\FormFactory\FormFactory(Shopware()->Container()));
+    return new \ShopwareSymfonyForms\FormFactory\FormFactory(Shopware()->Container()));
 }
 
 ```
