@@ -51,12 +51,19 @@ class FormFactory implements FormFactoryInterface
     /** @var string $defaultLocale */
     protected $defaultLocale = "en";
 
+    /** @var null|string Custom Theme Path */
+    protected $theme = null;
+
     /**
      * FormFactory constructor.
      * @param Container $container
+     * @param string $theme
      */
-    public function __construct(Container $container)
+    public function __construct(Container $container, $theme = null)
     {
+        # adding custom theme path
+        $this->theme = $theme;
+
         # configuring the form factory
         $this->formFactory = Forms::createFormFactoryBuilder()
             ->addExtension(new DoctrineOrmExtension(new ExtendedEntityManager($container->get('models'))))
@@ -79,6 +86,11 @@ class FormFactory implements FormFactoryInterface
             $formDir,
             self::VIEW_PATH
         );
+
+        # adding custom theme path if not null
+        if(!is_null($this->theme)){
+            $defaultThemes[] = $this->theme;
+        }
 
         return $defaultThemes;
     }
