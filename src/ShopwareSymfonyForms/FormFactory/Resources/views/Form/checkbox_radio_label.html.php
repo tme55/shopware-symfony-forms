@@ -6,6 +6,9 @@ if(isset($widget)) {
 	if (isset($parent_label_class)) {
 		$label_attr['class'] = trim((isset($label_attr['class']) ? $label_attr['class'] : '') . ' ' . $parent_label_class);
 	}
+
+	$label_attr['class'] .= ' ' . $view['form']->block($form, 'form_error_class');
+
 	if($label !== false && !$label) {
 		$label = $view['form']->humanize($name);
 	}
