@@ -1,4 +1,4 @@
-<?php $attr['class'] = trim((isset($attr['class']) ? $attr['class'] : '') . ' ' . $view['form']->block($form, 'form_widget_class'). ' ' . $view['form']->block($form, 'form_error_class')); ?>
+<?php $attr['class'] = trim((isset($attr['class']) ? $attr['class'] : '') . ' ' . $view['form']->block($form, 'form_widget_class'). ' ' . $view['form']->block($form, 'form_error')); ?>
 <select
     <?php if ($required && null === $placeholder && $placeholder_in_choices === false && $multiple === false):
         $required = false;
