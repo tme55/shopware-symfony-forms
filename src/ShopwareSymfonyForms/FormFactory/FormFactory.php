@@ -11,6 +11,7 @@ namespace ShopwareSymfonyForms\FormFactory;
 use ShopwareSymfonyForms\FormFactory\Manager\ExtendedEntityManager;
 use ShopwareSymfonyForms\FormFactory\Parser\TemplateNameParser;
 use ShopwareSymfonyForms\FormFactory\Plugins\SmartyPlugins;
+use ShopwareSymfonyForms\FormFactory\RequestHandler\EnlightControllerRequestRequestHttpRequestHandler;
 use Symfony\Bridge\Doctrine\Form\DoctrineOrmExtension;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\FormHelper;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\TranslatorHelper;
@@ -119,7 +120,7 @@ class FormFactory implements FormFactoryInterface
     }
 
     /**
-     * Wrapping the original form factory method
+     * Overriding the original form factory method by setting request handler to EnlightControllerRequestRequestHttpRequestHandler
      * @param string $type
      * @param null $data
      * @param array $options
@@ -128,7 +129,7 @@ class FormFactory implements FormFactoryInterface
      */
     public function create($type = 'form', $data = null, array $options = array())
     {
-        return $this->formFactory->create($type, $data, $options);
+        return $this->createBuilder($type, $data, $options)->setRequestHandler(new EnlightControllerRequestRequestHttpRequestHandler())->getForm();
     }
 
     /**
