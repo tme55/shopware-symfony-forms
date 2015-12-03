@@ -20,7 +20,12 @@
     } ?>
     <label <?php foreach ($label_attr as $k => $v) {
         printf('%s="%s" ', $view->escape($k), $view->escape($v));
-    } ?>><?php echo $view->escape(false !== $translation_domain ? $view['translator']->trans($label, array(), $translation_domain) : $label) ?></label>
+    } ?>>
+        <?php
+        $requiredAsterisk = ($required === true) ? $view['form']->block($form, 'form_required') : '';
+        echo $view->escape(false !== $translation_domain ? $view['translator']->trans($label, array(), $translation_domain) : $label) . $requiredAsterisk;
+        ?>
+    </label>
 <?php } else { ?>
     <div class="<?= $view['form']->block($form, 'form_label_class') ?>"></div>
 <?php } ?>
