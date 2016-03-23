@@ -1,5 +1,5 @@
 <?php
-$class = isset($class) ? $class : '';
+$class = isset($attr['class']) ? $attr['class'] : '';
 if (!isset($type) || 'file' != $type) {
     $attr['class'] = trim($class . ' btn');
 }
