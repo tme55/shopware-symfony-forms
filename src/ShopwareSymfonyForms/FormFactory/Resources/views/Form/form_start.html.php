@@ -1,4 +1,4 @@
-<?php $attr['class'] = trim((isset($attr['class']) ? $attr['class'] : '') . ' form-horizontal') ?>
+<?php $attr['class'] = trim((isset($attr['class']) ? $attr['class'] : 'form-horizontal')) ?>
 <?php $method = strtoupper($method) ?>
 <?php $form_method = $method === 'GET' || $method === 'POST' ? $method : 'POST' ?>
 <form name="<?php echo $name ?>" method="<?php echo strtolower($form_method) ?>" action="<?php echo $action ?>"<?php foreach ($attr as $k => $v) { printf(' %s="%s"', $view->escape($k), $view->escape($v)); } ?><?php if ($multipart): ?> enctype="multipart/form-data"<?php endif ?> data-error-class="<?php echo $view['form']->block($form, 'form_error_class');?>">
