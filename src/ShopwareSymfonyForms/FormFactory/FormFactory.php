@@ -15,7 +15,7 @@ use ShopwareSymfonyForms\FormFactory\RequestHandler\EnlightControllerRequestRequ
 use Symfony\Bridge\Doctrine\Form\DoctrineOrmExtension;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\FormHelper;
 use Symfony\Bundle\FrameworkBundle\Templating\Helper\TranslatorHelper;
-use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\Extension\Templating\TemplatingRendererEngine;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Form\FormBuilderInterface;
