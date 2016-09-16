@@ -57,16 +57,26 @@ class FormFactory implements FormFactoryInterface
 
     /**
      * FormFactory constructor.
-     * @param Container $container
-     * @param string $theme
+     * @param ContainerInterface $container
+     * @param null $theme
+     * @param array $extensions
+     * @param array $typeExtensions
      */
-    public function __construct(Container $container, $theme = null)
+    public function __construct(ContainerInterface $container, $theme = null, array $extensions = array(), array $typeExtensions = array())
     {
         # adding custom theme path
         $this->theme = $theme;
 
+        $formFactoryBuilder = Forms::createFormFactoryBuilder();
+
+        # adding custom form extensions
+        $formFactoryBuilder->addExtensions($extensions);
+
+        # adding custom form type extensions
+        $formFactoryBuilder->addTypeExtensions($typeExtensions);
+
         # configuring the form factory
-        $this->formFactory = Forms::createFormFactoryBuilder()
+        $this->formFactory = $formFactoryBuilder
             ->addExtension(new DoctrineOrmExtension(new ExtendedEntityManager($container->get('models'))))
             ->addExtension(new ValidatorExtension(Validation::createValidator()))
             ->getFormFactory();
