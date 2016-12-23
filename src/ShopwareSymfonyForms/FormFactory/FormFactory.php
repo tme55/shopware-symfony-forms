@@ -77,7 +77,7 @@ class FormFactory implements FormFactoryInterface
 
         # configuring the form factory
         $this->formFactory = $formFactoryBuilder
-            ->addExtension(new DoctrineOrmExtension(new ExtendedEntityManager($container->get('models'))))
+            ->addExtension(new DoctrineOrmExtension(new ExtendedEntityManager($container)))
             ->addExtension(new ValidatorExtension(Validation::createValidator()))
             ->getFormFactory();
 
