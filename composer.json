@@ -1,5 +1,5 @@
 {
-	"name": "barbieswimcrew/shopware-symfony-forms",
+	"name": "tme55/shopware-symfony-forms",
     "description": "Integration of the symfony2 form component in Shopware projects",
     "keywords": ["shopware", "symfony", "form builder"],
     "license": "MIT",
@@ -10,7 +10,7 @@
     ],
 	"require": {
         "php": ">=5.4.0",
-		"symfony/http-foundation": "~2.1",
+		"symfony/http-foundation": "~3.1",
 		"symfony/http-kernel": "~2.1",
 		"symfony/form": "~2.1",
 		"symfony/validator": "~2.1",
