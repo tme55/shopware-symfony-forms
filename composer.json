@@ -11,10 +11,10 @@
 	"require": {
         "php": ">=5.4.0",
 		"symfony/http-foundation": "~3.1",
-		"symfony/http-kernel": "~2.1",
+		"symfony/http-kernel": "~3.1",
 		"symfony/form": "~2.1",
 		"symfony/validator": "~2.1",
-		"symfony/templating": "~2.7",
+		"symfony/templating": "~2.8",
 		"symfony/framework-bundle": "^3.1",
 		"symfony/doctrine-bridge": "^3.1"
 	},
